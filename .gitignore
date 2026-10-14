@@ -1,0 +1,7 @@
+.env
+*.env
+.n8n/
+credentials*.json
+.DS_Store
+Thumbs.db
+.vscode/

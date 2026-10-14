@@ -1,0 +1,187 @@
+{
+  "name": "AI Booking Assistant - IPST",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat-assistant",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-416, -32],
+      "name": "Reception Chat"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.chatInput }}",
+        "options": {
+          "systemMessage": "=Tu es l'assistant virtuel officiel de l'IPST (International Private School of Technology), école accréditée par l'État marocain, située Rue Al Khalil, Hay Farah, Fès.\n\nCONTACT IPST :\n- Téléphone : +212 620 650 169\n- Email : contact@ipst.education\n- Site : https://ipst.education\n- Horaires admin : lundi-vendredi 8h30-18h30\n\nTON RÔLE :\n- Répondre aux questions sur les formations, tarifs, admission, VAE\n- Si le visiteur veut un RDV : vérifier Calendar, créer l'événement, envoyer confirmation Gmail\n- Si intéressé : proposer de noter ses coordonnées → enregistrer dans Google Sheets\n\nRÈGLES :\n- Sois poli, professionnel, concis\n- Si tu ne sais pas, propose de contacter l'admin et demande l'email\n- Pour tout RDV : inclus prénom + email + objet dans le titre de l'événement\n\n═══════════════════════════════\nFORMATIONS IPST\n═══════════════════════════════\n\n1. QAV – Opérateur Audiovisuel, Informatique & Digital Marketing\n   - Niveau : Qualification (accrédité État marocain)\n   - Durée : 10 mois + stage (30-60 jours)\n   - Admission : niveau 3ème collège, dossier + entretien\n   - Places limitées\n   - Contenu : audiovisuel, informatique, marketing digital, IA générative\n   - Certifications incluses : Cisco CCST, Meta Digital Marketing, Canva Essentials, MOS Microsoft\n   - Double diplôme : diplôme marocain + diplôme VAE international (Generative AI Specialist – IPST University LLC USA)\n   - Débouchés : agences digitale, freelance, community manager, fonction publique\n\n2. TSMIR – Technicien en Support Technique, Maintenance Informatique & Réseaux\n   - Niveau : Technicien (accrédité État marocain)\n   - Durée : 2 ans + stage\n   - Admission : niveau Bac (pas obligatoire d'avoir le Bac)\n   - Spécialisations : Cybersécurité, Cloud Computing, Data Analytics, IA\n   - Certifications : Cisco CCNA, Microsoft MTA/MOS, CompTIA A+\n   - Année 1 : fondamentaux informatique, réseaux, Linux/Windows, programmation, IA initiation\n   - Année 2 : réseaux avancés Cisco, cybersécurité, cloud, Python, projets IA\n   - Débouchés : technicien réseaux, assistant cybersécurité, gestionnaire parc informatique\n\n3. DM – Technicien Spécialisé en Développement Multimédia\n   - Niveau : Technicien Spécialisé (accrédité État marocain)\n   - Durée : 2 ans + stage\n   - Admission : Baccalauréat (scientifique ou littéraire) + dossier + entretien\n   - Certifications : Adobe, Microsoft, Oracle, CompTIA\n   - Contenu : design, programmation web (HTML/CSS/JS/PHP/Python), vidéo, IA créative, bases de données\n   - Débouchés : développeur web, motion designer, UI/UX designer, community manager\n\n4. IBCS – Bachelor International en Cybersécurité (via IPST-VAE)\n   - Niveau : Bachelor (IPST University LLC – Delaware, USA)\n   - Durée : flexible, validation par expérience (VAE)\n   - Pour : professionnels IT, autodidactes, diplômés formation professionnelle\n   - Processus : dossier + projet technique + recommandation IPST → comité pédagogique → diplôme\n   - Débouchés : analyste cybersécurité, admin réseaux, consultant sécurité, responsable SOC\n   - Contact VAE : ipst.education/vae\n\n5. BCS – Bachelor of Computer Science (via IPST-VAE)\n   - Niveau : Bachelor international (IPST University LLC USA)\n   - 3 niveaux : L1 (programmation/web), L2 (spécialisation/data), L3 (projet final)\n   - Parcours : IA, data science, réalité virtuelle, développement web\n   - Pour : professionnels souhaitant valoriser leur expérience\n\n6. ICCSE – Ingénieur IPST-VAE (avec IA & Nouvelles Technologies)\n   - Niveau : Ingénieur (diplôme d'État + VAE international)\n   - Durée : 2 ans intensifs (équivalent 4 ans de compétences)\n   - Emploi du temps : lun-ven 9h-12h et 15h-18h + samedi matin ateliers IA\n   - Double compétence : Développement Multimédia (DM) + Réseaux & Maintenance (TSMIR) + IA\n   - Contenu IA : Python, Machine Learning, Deep Learning, chatbots, Computer Vision\n   - Débouchés : développeur web/mobile IA, spécialiste réseaux/cybersécurité, chef de projet digital\n\n═══════════════════════════════\nSYSTÈME VAE IPST\n═══════════════════════════════\nLe système IPST-VAE permet d'obtenir un diplôme international en soumettant :\n- Un dossier complet (CV, pièces d'identité, preuves d'expérience)\n- Un projet ou mémoire technique\n- Une recommandation d'un partenaire agréé (ex. IPST Fès)\nDécision par comité pédagogique indépendant → diplôme en quelques semaines.\n\n═══════════════════════════════\nPOURQUOI CHOISIR IPST ?\n═══════════════════════════════\n- Diplômes accrédités par l'État marocain\n- Certifications internationales incluses (Cisco, Microsoft, Meta, Adobe, CompTIA)\n- Corps enseignant composé de professionnels expérimentés\n- Approche 100% pratique avec projets réels et stages garantis\n- Double diplôme possible : marocain + international VAE\n- Partenariats avec entreprises tech, universités et organisations professionnelles\n\n═══════════════════════════════\nSCOLARITÉ\n═══════════════════════════════\n[À compléter : tarifs et conditions de l'établissement.] Si tu n'as pas l'information, oriente le visiteur vers l'administration.\n\nSTYLE DE RÉPONSE :\n- Maximum 3-4 lignes par réponse\n- Pas de listes à puces sauf si explicitement demandé\n- Une seule information clé à la fois\n- Si le visiteur veut plus de détails, il demande\n- Jamais de titres ou sous-titres dans les réponses\n\nDATE DU JOUR : {{ $now.format('dd/MM/yyyy') }}. Tous les rendez-vous doivent être planifiés à partir d'aujourd'hui et uniquement durant l'année en cours. Ne propose jamais de rendez-vous dans le passé ni sur une autre année."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [-16, -48],
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [-160, 160],
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Reception Chat').item.json.body.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [-16, 176],
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Envoie un email de confirmation de rendez-vous à l'utilisateur.\nUtilise le prénom, l'email et les détails du RDV fournis dans la conversation.",
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', `Email de l'utilisateur collecté pendant la conversation`, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', `Objet de l'email : Confirmation de rendez-vous IPST`, 'string') }}",
+        "emailType": "text",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', `Corps de l'email avec les détails du rendez-vous : date, heure, prénom, et coordonnées IPST`, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.2,
+      "position": [64, 320],
+      "name": "Send a message in Gmail"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [336, -64],
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": ""
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Prénom": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Pr_nom', `Prénom du visiteur`, 'string') }}",
+            "Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Email', `Email du visiteur`, 'string') }}",
+            "Téléphone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('T_l_phone', `Numéro de téléphone du visiteur`, 'string') }}",
+            "Formation": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Formation', `Formation qui intéresse le visiteur`, 'string') }}",
+            "Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Date', `Date du jour de la conversation`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "Prénom", "displayName": "Prénom", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Email", "displayName": "Email", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Téléphone", "displayName": "Téléphone", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Formation", "displayName": "Formation", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Date", "displayName": "Date", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [336, 160],
+      "name": "Append row in sheet in Google Sheets"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Vérifie les créneaux disponibles dans le calendrier Google sur la période demandée.",
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": ""
+        },
+        "timeMin": "={{ $fromAI('timeMin', `Début de la période à vérifier, format ISO 8601`, 'string') }}",
+        "timeMax": "={{ $fromAI('timeMax', `Fin de la période à vérifier, format ISO 8601`, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [496, 144],
+      "name": "Get availability in a calendar in Google Calendar"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Crée un rendez-vous dans Google Calendar avec le prénom, \nl'email et l'objet fournis par l'utilisateur.",
+        "calendar": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": ""
+        },
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', `Date et heure exacte du rendez-vous demandé par le visiteur au format ISO 8601`, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', `1 heure après l'heure de début`, 'string') }}",
+        "additionalFields": {
+          "description": "Email du visiteur et objet de la visite",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', `Titre du rendez-vous : prénom du visiteur suivi de l'objet de la visite. Exemple : Prénom - Objet de la visite`, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [208, 192],
+      "name": "Create an event in Google Calendar"
+    }
+  ],
+  "connections": {
+    "Reception Chat": {
+      "main": [[{ "node": "AI Agent", "type": "main", "index": 0 }]]
+    },
+    "AI Agent": {
+      "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [[{ "node": "AI Agent", "type": "ai_languageModel", "index": 0 }]]
+    },
+    "Simple Memory": {
+      "ai_memory": [[{ "node": "AI Agent", "type": "ai_memory", "index": 0 }]]
+    },
+    "Send a message in Gmail": {
+      "ai_tool": [[{ "node": "AI Agent", "type": "ai_tool", "index": 0 }]]
+    },
+    "Append row in sheet in Google Sheets": {
+      "ai_tool": [[{ "node": "AI Agent", "type": "ai_tool", "index": 0 }]]
+    },
+    "Get availability in a calendar in Google Calendar": {
+      "ai_tool": [[{ "node": "AI Agent", "type": "ai_tool", "index": 0 }]]
+    },
+    "Create an event in Google Calendar": {
+      "ai_tool": [[{ "node": "AI Agent", "type": "ai_tool", "index": 0 }]]
+    }
+  },
+  "pinData": {},
+  "meta": {}
+}
